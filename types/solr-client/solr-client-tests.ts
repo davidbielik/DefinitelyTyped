@@ -10,6 +10,14 @@ query.q({ id: '1' }); // $ExpectType Query
 
 client.search(query); // $ExpectType ClientRequest
 
+client.addAsync({id: "1"}).then(() => {}).catch(() => {});
+
+client.commitAsync().then(() => {}).catch(() => {});
+
+client.deleteByQueryAsync('field:value').then(() => {}).catch(() => {});
+
+client.deleteAllAsync().then(() => {}).catch(() => {});
+
 () => {
     client.search(query, (err, data) => {
         if (err) {
