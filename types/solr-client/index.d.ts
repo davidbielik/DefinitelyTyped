@@ -140,9 +140,11 @@ export interface Client {
     basicAuth(username: string, password: string): Client;
     unauth(): Client;
     add(docs: object[], options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
+    addAsync(docs: object[], options?: Options): Promise<ClientRequest>;
     realTimeGet(ids: string | string[], query?: Query, callback?: (err: Error, data: object) => void): ClientRequest;
     addRemoteResource(options: AddRemoteResourceOptions, callback?: (err: Error, data: object) => void): ClientRequest;
     commit(options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
+    commitAsync(options?: Options): Promise<ClientRequest>;
     prepareCommit(callback?: (err: Error, data: object) => void): ClientRequest;
     softCommit(callback?: (err: Error, data: object) => void): ClientRequest;
     delete(
@@ -160,7 +162,9 @@ export interface Client {
     ): ClientRequest;
     deleteByID(id: string | number, options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
     deleteByQuery(query: string, options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
+    deleteByQueryAsync(query: string, options?: Options): Promise<ClientRequest>;
     deleteAll(options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
+    deleteAllAsync(options?: Options): Promise<ClientRequest>;
     optimize(options: object, callback?: (err: Error, data: object) => void): ClientRequest;
     rollback(callback?: (err: Error, data: object) => void): ClientRequest;
     update(data: object, options?: object, callback?: (err: Error, data: object) => void): ClientRequest;
